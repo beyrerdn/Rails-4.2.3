@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+.pic-preview img{
+  height: 10em;
+  width: 9em;
+}

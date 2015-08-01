@@ -1,6 +1,6 @@
-<%@posts.sort_by{|post| post.rating}.reverse.each do |post|%>
+<%@posts.each do |post|%>
   <div class="row">
-    <div class ="col-md-1 post-rating">
+    <div class ="col-xs-1 post-rating">
       <%= link_to upvote_path(:id => post.id), class: "btn btn-default" do %>
         <i class="glyphicon glyphicon-arrow-up"></i>
       <% end %>
@@ -9,22 +9,19 @@
         <i class="glyphicon glyphicon-arrow-down"></i>
       <% end %>
     </div>
-    <div class="col-xs-1">
+    <div class="col-xs-1 pic-preview">
       <a href="<%=post.url%>" class="thumbnail">
         <img src="<%=post.url%>" onerror="this.src='<%=image_path("yaddit_guy#{%w(1 2 3 4).sample}.png")%>';" alt="Missing Image">
       </a>
     </div>
     <div class="col-xs-10">
-      <a href="<%= post.url %>">
+      <%= link_to upvote_path(:id => post.id) do %>
+        <a href="<%= post.url %>">
           <h2 class="post-title">
-              <%= post.title %>
+            <%= post.title %>
           </h2>
-          <!-- <h3 class="post-subtitle"> -->
-              <%# post.summary %>
-          <!-- </h3> -->
-      </a>
-      <!-- <div id="<%#post.author.last_name.downcase%>" class="author-image"> -->
-      <!-- <p class="post-meta">Posted by <a href="#"><%# post.author.show_name %></a> on <%# post.created_at.strftime('%B %d, %Y') %></p> -->
+        </a>
+      <% end %>
     </div>
   </div>
   <hr/>
