@@ -4,22 +4,22 @@
       <%= link_to upvote_path(:id => post.id), class: "btn btn-default" do %>
         <i class="glyphicon glyphicon-arrow-up"></i>
       <% end %>
-      <h3><%= post.rating %></h3>
+      <h4><%= post.rating %></h4>
       <%= link_to downvote_path(:id => post.id), class: "btn btn-default" do %>
         <i class="glyphicon glyphicon-arrow-down"></i>
       <% end %>
     </div>
-    <div class="col-xs-1 pic-preview">
+    <div class="col-md-2 col-sm-3 col-xs-5 pic-preview">
       <a href="<%=post.url%>" class="thumbnail">
         <img src="<%=post.url%>" onerror="this.src='<%=image_path("yaddit_guy#{%w(1 2 3 4).sample}.png")%>';" alt="Missing Image">
       </a>
     </div>
-    <div class="col-xs-10">
+    <div class="col-md-9 col-sm-8 col-xs-6">
       <%= link_to upvote_path(:id => post.id) do %>
         <a href="<%= post.url %>">
-          <h2 class="post-title">
+          <h3 class="post-title">
             <%= post.title %>
-          </h2>
+          </h3>
         </a>
       <% end %>
     </div>

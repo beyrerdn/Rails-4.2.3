@@ -17,3 +17,16 @@
   height: 10em;
   width: 9em;
 }
+
+.thumbnail {
+    border: 0 none;
+    box-shadow: none;
+}
+
+.navbar {
+  background-color: #cee3f8;
+  border-bottom: 1px solid #5f99cf;
+  position: relative;
+  background-color: #cee3f8;
+  z-index: 99;
+}
