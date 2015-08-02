@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   has_many :votes
+  belongs_to :user
 
   def up_vote
     upvote = Vote.create(:up => true)
@@ -15,7 +16,7 @@ class Post < ActiveRecord::Base
   def up_votes
     votes.where("up = ?", true).count
   end
-  
+
   #Count downvotes
   def down_votes
     votes.where("up = ?", false).count
