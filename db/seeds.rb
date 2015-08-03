@@ -2,5 +2,5 @@ Subreddit.create!([
   {title: "todayilearned"},
   {title: "funny"},
   {title: "aww"},
-  {title: "gif"}
+  {title: "gifs"}
 ])
