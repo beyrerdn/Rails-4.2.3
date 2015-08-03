@@ -1,12 +1,15 @@
 class Post < ActiveRecord::Base
   has_many :votes
   belongs_to :user
+  belongs_to :subreddit
 
+  #Adds an upvote to active post
   def up_vote
     upvote = Vote.create(:up => true)
     votes << upvote
   end
 
+  #Adds a downvote to active post
   def down_vote
     downvote = Vote.create(:up => false)
     votes << downvote

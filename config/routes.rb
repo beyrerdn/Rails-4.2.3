@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
    get 'downvote/:id' => 'posts#down_arrow', as: :downvote
 
+   get '/r/:title' => 'subreddits#index', as: :subreddit_posts
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

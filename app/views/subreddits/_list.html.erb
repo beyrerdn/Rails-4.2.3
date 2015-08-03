@@ -22,7 +22,7 @@
           <%= post.title %>
         </h3>
       <% end %>
-      <p><em>Submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.email%></em></p>
+      <p><em>Created by <%= post.user.email%> <%= time_ago_in_words(post.created_at) %> ago</em></p>
       <p class="display-subreddit"><small><em> /r/<%= post.subreddit.title%></em></small></p>
     </div>
   </div>

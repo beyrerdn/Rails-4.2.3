@@ -38,16 +38,22 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left">
+          <p class="navbar-text pull-left">
+            <% Subreddit.first(10).each do |subreddit| %>
+              <li><small><%= link_to " #{subreddit.title.upcase}|", subreddit_posts_path(:title => subreddit.title)  %></small></li>
+            <% end %>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
-          <p class="navbar-text pull-right">
-          <% if user_signed_in? %>
-            <li>Logged in as <strong><%= current_user.email %></strong>.</li>
-            <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
-            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to "Sign up", new_user_registration_path %></li>
-            <li><%= link_to "Login", new_user_session_path %></li>
-          <% end %>
+          <p class="navbar-text push-right">
+            <% if user_signed_in? %>
+              <li><small>Logged in as <strong><%= current_user.email %></strong></small></li>
+              <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "Sign up", new_user_registration_path %></li>
+              <li><%= link_to "Login", new_user_session_path %></li>
+            <% end %>
         </ul>
       </div>
         <!-- /.navbar-collapse -->
