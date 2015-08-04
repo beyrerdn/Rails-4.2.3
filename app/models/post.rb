@@ -2,17 +2,16 @@ class Post < ActiveRecord::Base
   has_many :votes
   belongs_to :user
   belongs_to :subreddit
+  has_many :comments, :as => :commentable
 
   #Adds an upvote to active post
   def up_vote(current_user_id)
-    upvote = Vote.create(:up => true, :user_id => current_user_id)
-    votes << upvote
+    votes << Vote.new(:up => true, :user_id => current_user_id)
   end
 
   #Adds a downvote to active post
   def down_vote(current_user_id)
-    downvote = Vote.create(:up => false, :user_id => current_user_id)
-    votes << downvote
+    votes << Vote.new(:up => false, :user_id => current_user_id)
   end
 
   #Count upvotes
