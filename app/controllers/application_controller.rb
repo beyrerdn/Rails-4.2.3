@@ -4,4 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   protect_from_forgery with: :exception
   before_action :authenticate_user!
+  before_filter :subreddit_links, unless: :format_not_html
+
+  def subreddit_links
+    @subreddit_links = Subreddit.first(10)
+  end
+
+  def format_not_html
+    !request.format.html?
+  end
+
 end

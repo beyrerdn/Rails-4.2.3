@@ -40,7 +40,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-left">
           <p class="navbar-text pull-left">
-            <% Subreddit.first(10).each do |subreddit| %>
+            <% @subreddit_links.each do |subreddit| %>
               <li><small><%= link_to " #{subreddit.title.upcase}|", subreddit_posts_path(:title => subreddit.title)  %></small></li>
             <% end %>
         </ul>
