@@ -4,6 +4,11 @@ class Post < ActiveRecord::Base
   belongs_to :subreddit
   has_many :comments, :as => :commentable
 
+  def update_rating_cache
+    self.rating_cache = self.rating
+    self.save!
+  end
+
   #Adds an upvote to active post
   def up_vote(current_user_id)
     votes << Vote.new(:up => true, :user_id => current_user_id)

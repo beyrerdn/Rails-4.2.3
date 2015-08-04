@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   # GET /posts.json
 
   def index
-    @posts = Post.all.sort_by{|post| post.rating}.reverse!
+    @posts = Post.order(rating_cache: :desc)
   end
 
   # GET /posts/1
