@@ -4,14 +4,14 @@ class Post < ActiveRecord::Base
   belongs_to :subreddit
 
   #Adds an upvote to active post
-  def up_vote
-    upvote = Vote.create(:up => true)
+  def up_vote(current_user_id)
+    upvote = Vote.create(:up => true, :user_id => current_user_id)
     votes << upvote
   end
 
   #Adds a downvote to active post
-  def down_vote
-    downvote = Vote.create(:up => false)
+  def down_vote(current_user_id)
+    downvote = Vote.create(:up => false, :user_id => current_user_id)
     votes << downvote
   end
 

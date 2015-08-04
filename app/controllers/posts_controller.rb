@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :up_arrow, :down_arrow]
-  before_action :authenticate_user!, only: [:new, :create, :update, :down_arrow]
+  before_action :authenticate_user!, only: [:new, :create, :update, :up_arrow, :down_arrow]
   before_filter :link_exist?, only: [:create]
   before_action :subreddit_select, only: [:new, :edit, :update, :create]
   # GET /posts
@@ -23,12 +23,12 @@ class PostsController < ApplicationController
   end
 
   def up_arrow
-    @post.up_vote
+    @post.up_vote(current_user.id)
     redirect_to root_path
   end
 
   def down_arrow
-    @post.down_vote
+    @post.down_vote(current_user.id)
     redirect_to root_path
   end
 

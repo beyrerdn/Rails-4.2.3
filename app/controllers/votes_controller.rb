@@ -1,5 +1,6 @@
 class VotesController < ApplicationController
-  before_action :set_vote, only: [:show, :edit, :update, :destroy]
+  before_action :set_vote, only: [:show, :edit, :destroy]
+  before_action :authenticase_user!
 
   # GET /votes
   # GET /votes.json
@@ -28,10 +29,10 @@ class VotesController < ApplicationController
 
     respond_to do |format|
       if @vote.save
-        format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
+        format.html { redirect_to :back, notice: "Vote was successfully recorded." }
         format.json { render :show, status: :created, location: @vote }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @vote.errors, status: :unprocessable_entity }
       end
     end
@@ -42,10 +43,10 @@ class VotesController < ApplicationController
   def update
     respond_to do |format|
       if @vote.update(vote_params)
-        format.html { redirect_to @vote, notice: 'Vote was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Vote was successfully updated.' }
         format.json { render :show, status: :ok, location: @vote }
       else
-        format.html { render :edit }
+        format.html { render :back, notice: "You've already voted for that."  }
         format.json { render json: @vote.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +70,6 @@ class VotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vote_params
-      params.require(:vote).permit(:user_id, :post_id, :up?)
+      params.require(:vote).permit(:user_id, :post_id, :up)
     end
 end
