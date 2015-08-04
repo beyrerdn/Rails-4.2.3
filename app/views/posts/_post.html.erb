@@ -3,7 +3,7 @@
     <%= link_to upvote_path(:id => post.id), class: "btn btn-default" do %>
       <i class="glyphicon glyphicon-arrow-up"></i>
     <% end %>
-    <h4><%= post.rating %></h4>
+    <h4><%= post.rating_cache %></h4>
     <% if user_signed_in? %>
       <%= link_to downvote_path(:id => post.id), class: "btn btn-default" do %>
         <i class="glyphicon glyphicon-arrow-down"></i>
