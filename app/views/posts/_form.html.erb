@@ -11,15 +11,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :url %><br>
     <%= f.text_field :url %>
   </div>
   <div class="field">
-    <%= f.label :subreddit_id %><br>
     <%= f.select :subreddit_id, options_for_select(@subreddit_options, @post.subreddit_id), :prompt => "Choose a subreddit" %>
   </div>
   <div class="actions">

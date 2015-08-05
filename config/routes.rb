@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
    get 'downvote/:id' => 'posts#down_arrow', as: :downvote
 
-   get '/r/:title' => 'subreddits#index', as: :subreddit_posts
+   get '/r/:title' => 'subreddits#show', as: :subreddit_posts
 
    get 'posts/:id/fetch' => 'posts#fetch', :as => :post_fetch #Idea from Chris Vannoy
 

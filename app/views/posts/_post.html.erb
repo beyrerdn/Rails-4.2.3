@@ -1,12 +1,14 @@
 <div class="row">
   <div class ="col-xs-1 post-rating">
-    <%= link_to upvote_path(:id => post.id), class: "btn btn-default" do %>
-      <i class="glyphicon glyphicon-arrow-up"></i>
+    <% if user_signed_in? %>
+      <%= link_to upvote_path(:id => post.id), class: "btn btn-default" do %>
+        <i class="glyphicon glyphicon-chevron-up"></i>
+      <% end %>
     <% end %>
     <h4><%= post.rating_cache %></h4>
     <% if user_signed_in? %>
       <%= link_to downvote_path(:id => post.id), class: "btn btn-default" do %>
-        <i class="glyphicon glyphicon-arrow-down"></i>
+        <i class="glyphicon glyphicon-chevron-down"></i>
       <% end %>
     <% end %>
   </div>
@@ -21,7 +23,7 @@
         <%= post.title %>
       </h3>
     <% end %>
-    <p><em>Submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.email%></em></p>
+    <p><em>submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.email%></em></p>
     <p class="display-subreddit"><small><em> /r/<%= post.subreddit.title%></em></small></p>
     <%= link_to "#{post.comments.count} Comments", post_path(post)%>
   </div>
