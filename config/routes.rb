@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  resources :comments
   devise_for :users
   resources :votes
-  resources :posts
+  resources :comments
+
+  resources :posts do
+      resources :comments, only: [:create, :update, :show]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -13,7 +17,7 @@ Rails.application.routes.draw do
 
    get 'downvote/:id' => 'posts#down_arrow', as: :downvote
 
-   get '/r/:title' => 'subreddits#index', as: :subreddit_posts
+   get '/r/:title' => 'subreddits#show', as: :subreddit_posts
 
    get 'posts/:id/fetch' => 'posts#fetch', :as => :post_fetch #Idea from Chris Vannoy
 

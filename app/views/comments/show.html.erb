@@ -7,18 +7,8 @@
 
 <p>
   <strong>User:</strong>
-  <%= @comment.user_id %>
-</p>
-
-<p>
-  <strong>Commentable:</strong>
-  <%= @comment.commentable_id %>
-</p>
-
-<p>
-  <strong>Commentable type:</strong>
-  <%= @comment.commentable_type %>
+  <%= @comment.user.email %>
 </p>
 
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Back', post_path(@comment.commentable_id) %>

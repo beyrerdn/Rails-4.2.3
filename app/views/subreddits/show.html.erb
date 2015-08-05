@@ -1,4 +1,11 @@
+<% if @posts.first %>
+  <h1><%=@posts.first.subreddit.title %></h1>
+<% end %>
+<div class="row">
+  <div class="col-xs-12" style="height:30px;"></div>
+</div>
 <%= render(partial: 'posts/post', collection: @posts) || render(partial: 'no_posts') %>
+
 <% if user_signed_in? %>
   <p><%= link_to 'New Post', new_post_path %></p>
 <% end %>

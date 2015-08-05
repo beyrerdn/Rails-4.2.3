@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   # GET /comments
   # GET /comments.json
-  def index
+  def index #borrowed from Caleb Francis in an attempt to get comments working
     @comments = Comment.all
   end
 
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.new(comment_params)
 
     respond_to do |format|
       if @comment.save
