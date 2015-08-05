@@ -5,26 +5,18 @@
 
 <p>
   <strong>Url:</strong>
-  <%= @post.url %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
+  <%= link_to do %>
+    <%= @post.url %>
+  <% end %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @post.user_id %>
-</p>
-
-<p>
-  <strong>Subreddit:</strong>
-  <%= @post.subreddit_id %>
+  <%= @post.user.email %>
 </p>
 
 <% if current_user %>
-  <%= render :partial => "comments/form", :locals => {:commentable_object => @post} %>
+  <div class="form"><%= render :partial => "comments/form", :locals => {:commentable_object => @post} %></div>
 <% end %>
 
-<%= render :partial => "comments/comment", :collection => @post.comments %>
+<div class="view-comments"><%= render :partial => "comments/comment", :collection => @post.comments %></div>

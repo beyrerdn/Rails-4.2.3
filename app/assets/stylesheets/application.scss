@@ -10,9 +10,11 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+ *= require rails_bootstrap_forms
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
 .pic-preview img{
   height: 10em;
   width: 9em;
@@ -27,6 +29,9 @@
   background-color: #cee3f8;
   border-bottom: 1px solid #5f99cf;
   position: relative;
-  background-color: #cee3f8;
   z-index: 99;
+}
+
+.post-rating {
+  text-align: center;
 }

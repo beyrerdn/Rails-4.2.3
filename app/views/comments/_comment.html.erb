@@ -1,6 +1,10 @@
-<div class="comment">
-  <%= simple_format(comment.body) %>
-  <p class="comment-meta">Posted by <%= comment.user.email %><% time_ago_in_words(comment.created_at) %></p>
-  <%= render :partial => "comments/form", :locals => {:commentable_object => comment} %>
-  <%= render :partial => "comments/comment", :collection => comment.comments %>
+<div class="nest">
+  <div class="comment">
+    <%= simple_format(comment.body) %>
+    <p class="comment-meta">Posted by <%= comment.user.email %><% time_ago_in_words(comment.created_at) %></p>
+    <% if user_signed_in? %>
+      <div class="form"><%= render :partial => "comments/form", :locals => {:commentable_object => comment} %></div>
+    <% end %>
+    <div class="nested"><%= render :partial => "comments/comment", :collection => comment.comments %></div>
+  </div>
 </div>
