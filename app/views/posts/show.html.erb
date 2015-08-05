@@ -8,11 +8,23 @@
   <%= @post.url %>
 </p>
 
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @post.user_id %>
+</p>
+
+<p>
+  <strong>Subreddit:</strong>
+  <%= @post.subreddit_id %>
+</p>
+
 <% if current_user %>
-  <%= render :partial => 'comments/form', :locals => {:commentable_object => @post} %>
+  <%= render :partial => "comments/form", :locals => {:commentable_object => @post} %>
 <% end %>
 
 <%= render :partial => "comments/comment", :collection => @post.comments %>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
