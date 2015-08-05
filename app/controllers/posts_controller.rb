@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
 
+  #Could if params[:subreddit_id] work here to get the title from a subreddit?
   def index
     @posts = Post.order(rating_cache: :desc)
   end
@@ -13,7 +14,14 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post.up_vote
+
+  end
+
+  def fetch
+    @post = Post.find(params[:id])
+    if current_user
+      @post.up_vote(current_user.id)
+    end
     redirect_to @post.url
   end
 

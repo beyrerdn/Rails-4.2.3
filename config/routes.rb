@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
    get '/r/:title' => 'subreddits#index', as: :subreddit_posts
 
+   get 'posts/:id/fetch' => 'posts#fetch', :as => :post_fetch #Idea from Chris Vannoy
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
