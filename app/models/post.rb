@@ -34,4 +34,14 @@ class Post < ActiveRecord::Base
     up_votes - down_votes
   end
 
+  def comment_counter(link, total = 0)
+    if link.comments
+      total += link.comments.count
+      link.comments.each do |com|
+        comment_counter(com, total)
+      end
+    end
+    total
+  end
+
 end

@@ -25,6 +25,6 @@
     <% end %>
     <p><em>submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.email%></em></p>
     <p class="display-subreddit"><small><em> /r/<%= post.subreddit.title%></em></small></p>
-    <%= link_to "#{post.comments.count} Comments", post_path(post)%>
+    <%= link_to "#{post.comment_counter(post)} Comments", post_path(post)%>
   </div>
 </div>
