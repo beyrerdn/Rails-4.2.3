@@ -22,6 +22,10 @@ Rails.application.routes.draw do
 
    get 'posts/:id/fetch' => 'posts#fetch', :as => :post_fetch #Idea from Chris Vannoy
 
+   get 'users/:id' => 'devise/registrations#show', :as => :user_profile
+
+  #  get 'users/self' => '', :as => :self_profile
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

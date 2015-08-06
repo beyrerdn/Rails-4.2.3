@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_one :profile
   accepts_nested_attributes_for :profile
 
-  has_many :self_comments, :as => :commentable
+  has_many :self_comments, :as => :commentable, :class_name => Comment
+  has_many :threaded_comments, :as => :root, :class_name => User
 
 end

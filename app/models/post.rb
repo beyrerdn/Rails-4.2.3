@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :subreddit
   has_many :comments, :as => :commentable
+  has_many :threaded_comments, :as => :root, :class_name => User
 
   def update_rating_cache
     self.rating_cache = self.rating

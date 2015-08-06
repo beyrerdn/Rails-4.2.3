@@ -1,5 +1,13 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def self
+    @user = User.find(:id => current_user.id)
+  end
+
   private
 
   def configure_sign_up_params
